@@ -15,7 +15,7 @@ def parse_fosstodon_feed(username):
     return entries
 
 
-def update_db_with_new_toots(username):
+def update_db_with_new_toots(username, db=DB):
     entries = parse_fosstodon_feed(username)
     rows = [
         {
@@ -32,7 +32,7 @@ def update_db_with_new_toots(username):
         } for entry in entries
     ]
 
-    DB[username].upsert_all(rows, pk="id")
+    db[username].upsert_all(rows, pk="id")
 
 
 if __name__ == "__main__":
