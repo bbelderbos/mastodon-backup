@@ -9,14 +9,16 @@ DEFAULT_USER = "bbelderbos"
 DB = sqlite_utils.Database("toots.db")
 
 
-def parse_fosstodon_feed(username):
-    url = FOSSTODON_PROFILE.format(username=username) + ".rss"
-    entries = feedparser.parse(url).entries
+def _parse_fosstodon_feed(rss_feed):
+    entries = feedparser.parse(rss_feed).entries
     return entries
 
 
-def update_db_with_new_toots(username, db=DB):
-    entries = parse_fosstodon_feed(username)
+def update_db_with_new_toots(username, db=DB, rss_feed=None):
+    if rss_feed is None:
+        rss_feed = FOSSTODON_PROFILE.format(username=username) + ".rss"
+
+    entries = _parse_fosstodon_feed(rss_feed)
     rows = [
         {
             "id": int(entry.id.split("/")[-1]),
