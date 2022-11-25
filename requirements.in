@@ -1,4 +1,6 @@
 feedparser
 sqlite_utils
+streamlit
+SQLAlchemy
 # development
 pytest
