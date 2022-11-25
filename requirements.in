@@ -1,2 +1,4 @@
 feedparser
 sqlite_utils
+# development
+pytest

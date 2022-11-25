@@ -9,21 +9,23 @@ DEFAULT_USER = "bbelderbos"
 DB = sqlite_utils.Database("toots.db")
 
 
-def parse_fosstodon_feed(username):
-    url = FOSSTODON_PROFILE.format(username=username) + ".rss"
-    entries = feedparser.parse(url).entries
+def _parse_fosstodon_feed(rss_feed):
+    entries = feedparser.parse(rss_feed).entries
     return entries
 
 
-def update_db_with_new_toots(username):
-    entries = parse_fosstodon_feed(username)
+def update_db_with_new_toots(username, db=DB, rss_feed=None):
+    if rss_feed is None:
+        rss_feed = FOSSTODON_PROFILE.format(username=username) + ".rss"
+
+    entries = _parse_fosstodon_feed(rss_feed)
     rows = [
         {
             "id": int(entry.id.split("/")[-1]),
             "summary": entry.summary,
             # could normalize, but KISS :) - also usually max 1 tag per post
             "published": datetime.datetime(*entry.published_parsed[:6]),
-            "tags": ", ".join(t.term for t in getattr(entry, "tags", [])),
+            "tags": ", ".join(t.term.lower() for t in getattr(entry, "tags", [])),
             "media": (
                 entry.media_content[0]["url"]
                 if getattr(entry, "media_content", False)
@@ -32,7 +34,7 @@ def update_db_with_new_toots(username):
         } for entry in entries
     ]
 
-    DB[username].upsert_all(rows, pk="id")
+    db[username].upsert_all(rows, pk="id")
 
 
 if __name__ == "__main__":
