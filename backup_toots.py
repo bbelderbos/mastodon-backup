@@ -25,7 +25,7 @@ def update_db_with_new_toots(username, db=DB, rss_feed=None):
             "summary": entry.summary,
             # could normalize, but KISS :) - also usually max 1 tag per post
             "published": datetime.datetime(*entry.published_parsed[:6]),
-            "tags": ", ".join(t.term for t in getattr(entry, "tags", [])),
+            "tags": ", ".join(t.term.lower() for t in getattr(entry, "tags", [])),
             "media": (
                 entry.media_content[0]["url"]
                 if getattr(entry, "media_content", False)
