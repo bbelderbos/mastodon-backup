@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:webfeeds="http://webfeeds.org/rss/1.0" xmlns:media="http://search.yahoo.com/mrss/">
+  <channel>
+    <title>Bob Belderbos</title>
+    <description>Public posts from @bbelderbos@fosstodon.org</description>
+    <link>https://fosstodon.org/@bbelderbos</link>
+    <image>
+      <url>https://cdn.fosstodon.org/accounts/avatars/109/381/406/133/035/004/original/cedb386ad7fd5423.jpg</url>
+      <title>Bob Belderbos</title>
+      <link>https://fosstodon.org/@bbelderbos</link>
+    </image>
+    <lastBuildDate>Thu, 24 Nov 2022 15:15:39 +0000</lastBuildDate>
+    <webfeeds:icon>https://cdn.fosstodon.org/accounts/avatars/109/381/406/133/035/004/original/cedb386ad7fd5423.jpg</webfeeds:icon>
+    <generator>Mastodon v4.0.2</generator>
+    <item>
+      <guid isPermaLink="true">https://fosstodon.org/@bbelderbos/109399437435956867</guid>
+      <link>https://fosstodon.org/@bbelderbos/109399437435956867</link>
+      <pubDate>Thu, 24 Nov 2022 15:15:39 +0000</pubDate>
+      <description>&lt;p&gt;Nice command to quickly get a future date:&lt;/p&gt;&lt;p&gt;$ date -v +1m&lt;br /&gt;Sat Dec 24 15:48:04 CET 2022&lt;/p&gt;&lt;p&gt;(or -d, -v is for MacOS it seems)&lt;/p&gt;&lt;p&gt;Not sure how you can give it a future start date though ... so maybe time for a quick Python script + shell alias :)&lt;/p&gt;</description>
+    </item>
+    <item>
+      <guid isPermaLink="true">https://fosstodon.org/@bbelderbos/109398759036300470</guid>
+      <link>https://fosstodon.org/@bbelderbos/109398759036300470</link>
+      <pubDate>Thu, 24 Nov 2022 12:23:07 +0000</pubDate>
+      <description>&lt;p&gt;When I saw that Mastodon supports RSS, I thought: &amp;quot;cool let&amp;#39;s backup my toots&amp;quot; &lt;/p&gt;&lt;p&gt;Resulting script: &lt;a href="https://github.com/bbelderbos/mastodon-backup" target="_blank" rel="nofollow noopener noreferrer"&gt;&lt;span class="invisible"&gt;https://&lt;/span&gt;&lt;span class="ellipsis"&gt;github.com/bbelderbos/mastodon&lt;/span&gt;&lt;span class="invisible"&gt;-backup&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt; I hooked it up with GitHub Actions to run a few times per day.&lt;/p&gt;&lt;p&gt;It was a nice opportunity as well to use the amazing sqlite_utils library 😍&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
