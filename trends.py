@@ -1,21 +1,28 @@
+import collections
+import itertools
+
 import streamlit as st
 import pandas as pd
 
-st.title('My Fosstodon usage')
+st.title('My Mastodon (Fosstodon) usage')
 conn = "sqlite:///toots.db"
 df = pd.read_sql('SELECT * FROM bbelderbos', conn)
 
-st.subtitle('Daily activity')
+# TODO: over time change this to monthly or even yearly
+st.subheader('Daily activity')
 df["day"] = df.published.str[:10]
 
-df_grouped = pd.DataFrame(
+df_activity = pd.DataFrame(
     df.groupby(['day']).count()['id'])
-df_grouped.columns = ['# toots']
+df_activity.columns = ['# toots']
 
-st.line_chart(df_grouped)
+st.line_chart(df_activity)
 
-st.subtitle('Most used tags')
-st.bar_chart(df_grouped)
-#st.line_chart(df["day"])
+st.subheader('Most used tags')
+tags_per_toot = [t.split(", ") for t in df.tags if t]
+tags_flattened = itertools.chain.from_iterable(tags_per_toot)
+most_common_tags = collections.Counter(tags_flattened)
 
-#st.bar_chart(df_grouped)
+df_tags = pd.DataFrame.from_dict(most_common_tags, orient='index')
+df_tags.columns = ['# toots per tag']
+st.bar_chart(df_tags)
