@@ -14,7 +14,7 @@ blinker==1.5
     # via streamlit
 cachetools==5.2.0
     # via streamlit
-certifi==2022.9.24
+certifi==2022.12.7
     # via requests
 charset-normalizer==2.1.1
     # via requests
@@ -134,6 +134,8 @@ tzlocal==4.2
 urllib3==1.26.13
     # via requests
 validators==0.20.0
+    # via streamlit
+watchdog==3.0.0
     # via streamlit
 zipp==3.10.0
     # via importlib-metadata
