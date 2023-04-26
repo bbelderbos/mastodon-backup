@@ -28,8 +28,10 @@ jobs:
             ${{ runner.os }}-pip-
       - name: Install dependencies
         run: python -m pip install -r requirements.txt
-      - name: Backup toots
-        run: python backup_toots.py
+      - name: Backup toots bbelderbos
+        run: python backup_toots.py bbelderbos
+      - name: Backup toots pybites
+        run: python backup_toots.py pybites
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
