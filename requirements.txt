@@ -119,7 +119,7 @@ toml==0.10.2
     # via streamlit
 toolz==0.12.0
     # via altair
-tornado==6.2
+tornado==6.3.2
     # via streamlit
 typing-extensions==4.4.0
     # via streamlit
@@ -130,6 +130,8 @@ tzlocal==4.2
 urllib3==1.26.13
     # via requests
 validators==0.20.0
+    # via streamlit
+watchdog==3.0.0
     # via streamlit
 zipp==3.10.0
     # via importlib-metadata
